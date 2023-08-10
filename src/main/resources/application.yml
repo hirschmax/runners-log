@@ -1,0 +1,11 @@
+quarkus:
+  smallrye-openapi:
+    info-title: Runs Log API
+    info-version: 1.0.0
+    info-description: This is just an example service
+    info-terms-of-service: Free to use
+    info-contact-email: lulzturtle@gmx.net
+    info-contact-name: Maximilian Hirsch
+    info-contact-url: https://github.com/hirschmax
+    info-license-name: Apache 2.0
+    info-license-url: https://www.apache.org/licenses/LICENSE-2.0.html
