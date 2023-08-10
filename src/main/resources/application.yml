@@ -1,4 +1,8 @@
 quarkus:
+  management:
+    enabled: true
+    host: localhost
+    port: 9002
   smallrye-openapi:
     info-title: Runs Log API
     info-version: 1.0.0
