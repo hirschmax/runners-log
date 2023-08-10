@@ -13,3 +13,13 @@ quarkus:
     info-contact-url: https://github.com/hirschmax
     info-license-name: Apache 2.0
     info-license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  datasource:
+    username: ${QUARKUS_DATASOURCE_USERNAME}
+    password: ${QUARKUS_DATASOURCE_PASSWORD}
+    jdbc:
+      url: ${QUARKUS_DATASOURCE_JDBC_URL}
+  hibernate-orm:
+    database:
+      generation:
+        ~: update
+        create-schemas: true
