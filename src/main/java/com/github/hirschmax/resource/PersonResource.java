@@ -1,6 +1,5 @@
 package com.github.hirschmax.resource;
 
-import com.github.hirschmax.model.PersonRecord;
 import com.github.hirschmax.service.PersonService;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -18,21 +17,22 @@ public class PersonResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/name/{name}")
-    public PersonRecord getUserByName(String name) {
+    public PersonResponseBody getUserByName(String name) {
         return personService.getPersonByName(name);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/id/{id}")
-    public PersonRecord getUserById(String id) {
+    public PersonResponseBody getUserById(String id) {
         return personService.getPersonById(id);
     }
 
     @POST
-    @Path("/create/{name}")
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public void createPerson(String name) {
-        personService.createPerson(name);
+    public void createPerson(PersonCreateBody personCreateBody) {
+        personService.createPerson(personCreateBody);
     }
 }
