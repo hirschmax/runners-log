@@ -14,7 +14,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 @QuarkusTest
-@TestProfile(LocalTestProfile.class)
 class PersonResourceTest {
 
     @Test
