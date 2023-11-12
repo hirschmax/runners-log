@@ -15,10 +15,11 @@ public class PersonRepository implements PanacheRepository<PersonEntity> {
         return find("id", id).firstResultOptional();
     }
 
-    public void createPerson(PersonCreateParameters createParameters) {
+    public PersonEntity createPerson(PersonCreateParameters createParameters) {
         PersonEntity entity = new PersonEntity();
         entity.setName(createParameters.name());
         entity.setBirthdate(createParameters.birthdate());
         persist(entity);
+        return entity;
     }
 }

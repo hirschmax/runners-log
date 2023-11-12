@@ -3,6 +3,7 @@ package com.github.hirschmax.service;
 import com.github.hirschmax.exceptions.PersonNotFoundException;
 import com.github.hirschmax.model.Person;
 import com.github.hirschmax.persistence.PersonCreateParameters;
+import com.github.hirschmax.persistence.PersonEntity;
 import com.github.hirschmax.persistence.PersonRepository;
 import com.github.hirschmax.resource.PersonCreateBody;
 import com.github.hirschmax.resource.PersonResponseBody;
@@ -34,8 +35,10 @@ public class PersonService {
                 .orElseThrow(() -> new PersonNotFoundException(String.format("User not found! (id = %s)", id)));
     }
 
-    public void createPerson(PersonCreateBody parameters) {
-        personRepository.createPerson(mapToPersonCreateParameters(parameters));
+    public PersonResponseBody createPerson(PersonCreateBody personCreateBody) {
+        PersonEntity personEntity = personRepository.createPerson(mapToPersonCreateParameters(personCreateBody));
+        Person person = new Person(personEntity);
+        return new PersonResponseBody(person);
     }
 
     private PersonCreateParameters mapToPersonCreateParameters(PersonCreateBody inputParameters) throws DateTimeParseException {

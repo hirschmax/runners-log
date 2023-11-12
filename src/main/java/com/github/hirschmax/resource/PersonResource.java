@@ -4,6 +4,7 @@ import com.github.hirschmax.service.PersonService;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/person")
 public class PersonResource {
@@ -17,22 +18,23 @@ public class PersonResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/name/{name}")
-    public PersonResponseBody getUserByName(String name) {
-        return personService.getPersonByName(name);
+    public Response getUserByName(String name) {
+        return Response.ok(personService.getPersonByName(name)).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/id/{id}")
-    public PersonResponseBody getUserById(String id) {
-        return personService.getPersonById(id);
+    public Response getUserById(String id) {
+        return Response.ok(personService.getPersonById(id)).build();
     }
 
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public void createPerson(PersonCreateBody personCreateBody) {
-        personService.createPerson(personCreateBody);
+    public Response createPerson(PersonCreateBody personCreateBody) {
+        return Response.ok(personService.createPerson(personCreateBody)).build();
     }
 }
