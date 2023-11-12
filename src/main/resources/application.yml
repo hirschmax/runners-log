@@ -14,8 +14,9 @@ quarkus:
     info-license-name: Apache 2.0
     info-license-url: https://www.apache.org/licenses/LICENSE-2.0.html
   datasource:
-    username: ${QUARKUS_DATASOURCE_USERNAME}
-    password: ${QUARKUS_DATASOURCE_PASSWORD}
+    db-kind: postgresql
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     jdbc:
       url: ${QUARKUS_DATASOURCE_JDBC_URL}
   hibernate-orm:
@@ -23,3 +24,5 @@ quarkus:
       generation:
         ~: update
         create-schemas: true
+  http:
+    port: ${HTTP_PORT}
