@@ -22,4 +22,15 @@ public class RunnerRepository implements PanacheRepository<RunnerEntity> {
         persist(entity);
         return entity;
     }
+
+    public void addShoesForRunner(RunnerEntity runner, AddShoesParameters createParameters) {
+        ShoesEntity entity = new ShoesEntity();
+        entity.setBrand(createParameters.brand());
+        entity.setLabel(createParameters.label());
+        entity.setActive(createParameters.active());
+
+        runner.getShoes().add(entity);
+        entity.setRunner(runner);
+        persist(runner);
+    }
 }

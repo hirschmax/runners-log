@@ -37,4 +37,13 @@ public class RunnerResource {
     public Response createRunner(RunnerCreateBody runnerCreateBody) {
         return Response.ok(runnerService.createRunner(runnerCreateBody)).build();
     }
+
+    @POST
+    @Path("/shoes/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response addShoesForRunner(AddShoesBody addShoesBody) {
+        return Response.ok(runnerService.addShoes(addShoesBody)).build();
+    }
 }
