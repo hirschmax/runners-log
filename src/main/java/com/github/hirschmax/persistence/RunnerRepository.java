@@ -6,17 +6,17 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Optional;
 
 @ApplicationScoped
-public class PersonRepository implements PanacheRepository<PersonEntity> {
-    public Optional<PersonEntity> findUserByName(String name) {
+public class RunnerRepository implements PanacheRepository<RunnerEntity> {
+    public Optional<RunnerEntity> findRunnerByName(String name) {
         return find("name", name).firstResultOptional();
     }
 
-    public Optional<PersonEntity> findUserById(String id) {
+    public Optional<RunnerEntity> findRunnerById(String id) {
         return find("id", id).firstResultOptional();
     }
 
-    public PersonEntity createPerson(PersonCreateParameters createParameters) {
-        PersonEntity entity = new PersonEntity();
+    public RunnerEntity createRunner(RunnerCreateParameters createParameters) {
+        RunnerEntity entity = new RunnerEntity();
         entity.setName(createParameters.name());
         entity.setBirthdate(createParameters.birthdate());
         persist(entity);

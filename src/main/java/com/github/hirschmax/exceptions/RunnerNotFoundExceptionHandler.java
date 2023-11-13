@@ -5,9 +5,9 @@ import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 
 @Provider
-public class PersonNotFoundExceptionHandler implements ExceptionMapper<PersonNotFoundException> {
+public class RunnerNotFoundExceptionHandler implements ExceptionMapper<RunnerNotFoundException> {
     @Override
-    public Response toResponse(PersonNotFoundException e) {
+    public Response toResponse(RunnerNotFoundException e) {
         return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
     }
 }
